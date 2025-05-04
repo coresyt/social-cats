@@ -1,8 +1,10 @@
 {
   "name": "fullstack-example",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "workspaces": ["backend/", "frontend/"],
   "scripts": {
+    "commit": "sui-mono commit",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "eslint .",
