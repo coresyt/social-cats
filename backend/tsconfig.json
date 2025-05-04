@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2021",
+    "moduleResolution": "node",
     "module": "commonjs",
     "rootDir": "./src",
     "outDir": "./dist",
@@ -11,5 +12,9 @@
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": ["es2021"],
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "strictPropertyInitialization": false
   }
 }

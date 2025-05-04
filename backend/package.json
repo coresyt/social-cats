@@ -12,6 +12,12 @@
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "mysql2": "3.14.1",
+    "reflect-metadata": "0.2.2",
+    "time-stamp": "2.2.0",
+    "typeorm": "0.3.22"
+  },
   "devDependencies": {
     "ts-node-dev": "2.0.0",
     "typescript": "5.8.3"
