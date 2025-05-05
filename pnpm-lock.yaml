@@ -38,6 +38,9 @@ importers:
 
   backend:
     dependencies:
+      dotenv:
+        specifier: 16.5.0
+        version: 16.5.0
       mysql2:
         specifier: 3.14.1
         version: 3.14.1
@@ -51,6 +54,9 @@ importers:
         specifier: 0.3.22
         version: 0.3.22(mysql2@3.14.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.3)(typescript@5.8.3))
     devDependencies:
+      '@types/node':
+        specifier: 22.15.3
+        version: 22.15.3
       ts-node-dev:
         specifier: 2.0.0
         version: 2.0.0(@types/node@22.15.3)(typescript@5.8.3)
