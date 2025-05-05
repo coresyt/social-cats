@@ -21,12 +21,12 @@ export class Post implements IPost {
   @Column({ name: 'image_url', type: 'text' })
   imageUrl: string
   
-  @PrimaryColumn({ name: 'followee_id', type: 'string' })
-  author: User
-
+  @PrimaryColumn({ name: 'followee_id' })
+  authorId: string
+  
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'author_id' })
-  authorId: string
+  author: User
 
   @Column({
     name: 'created_at',
