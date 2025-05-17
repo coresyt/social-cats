@@ -20,6 +20,7 @@ if (typeof SECRET_KEY !== 'string') throw new Error(errorMessage('SECRET_KEY'))
   const PORT = process.env.PORT || 3000
 
 export {
+  errorMessage,
   MYSQL_ROOT_PASSWORD,
   MYSQL_DATABASE,
   MYSQL_HOST, 
