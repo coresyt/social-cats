@@ -5,15 +5,6 @@
     "module": "commonjs",
     "rootDir": "./src",
     "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "@entity/*": ["src/entity/*"],
-      "@types/*": ["src/types/*"],
-      "@lib/*": ["src/lib/*"],
-      "@middlewares/*": ["src/middlewares/*"],
-      "@controllers/*": ["src/controllers/*"],
-      "@routes/*": ["src/routes/*"]
-    },
     "newLine": "lf",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
