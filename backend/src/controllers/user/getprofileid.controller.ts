@@ -10,13 +10,9 @@ export default async function getProfileId(
   try {
     const userFound = await AppDataSource.getRepository(User)
       .createQueryBuilder('user')
-      .where('user.user_id = :id', { id: req.params.userId })
+      .where('user.id = :id', { id: req.params.userId })
       .getOne()
 
-    const followers = await AppDataSource.getRepository(Follow)
-      .createQueryBuilder('follow')
-      .where('follow.followee = :id', { id: req.params.userId })
-      .getMany()
 
     if (userFound === null) {
       res
@@ -25,20 +21,22 @@ export default async function getProfileId(
       return
     }
 
-    let followersCount = 0
-    let followingsCount = 0
+    const followers = await AppDataSource.getRepository(Follow)
+      .createQueryBuilder('follow')
+      .where('follow.follower_id = :id', { id: userFound.id })
+      .getCount()
 
-    followers.map(({ followeeId, followerId }) => {
-      if (followeeId === userFound.id) followersCount += 1
-      if (followerId === userFound.id) followingsCount += 1
-    })
+    const following = await AppDataSource.getRepository(Follow)
+      .createQueryBuilder('follow')
+      .where('follow.followee_id = :id', { id: userFound.id })
+      .getCount()
 
     res.status(200).json({
       info: {
         ...userFound,
         password: '',
-        followers: followersCount,
-        followings: followingsCount
+        followers,
+        following
       } as typeof userFound,
       code: 200
     })

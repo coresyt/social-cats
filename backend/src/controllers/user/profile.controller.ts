@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import { User } from '../../entity/User'
 import { AppDataSource } from '../../data-source'
+import { Follow } from '../../entity/Follow'
 
 export default async function getProfile(
   req: Request,
@@ -31,13 +32,29 @@ export default async function getProfile(
       .createQueryBuilder('user')
       .where('user.email = :email', { email: token.email })
       .getOne()
+      
     if (userFound === null) {
       res.status(404).json({ message: 'Your token not is valid', code: 404 })
       return
     }
 
+    const followers = await AppDataSource.getRepository(Follow)
+      .createQueryBuilder('follow')
+      .where('follow.follower_id = :id', { id: userFound.id })
+      .getCount()
+
+    const following = await AppDataSource.getRepository(Follow)
+      .createQueryBuilder('follow')
+      .where('follow.followee_id = :id', { id: userFound.id })
+      .getCount()
+
     res.status(200).json({
-      info: { ...userFound, password: '' } as typeof userFound,
+      info: {
+        ...userFound,
+        password: '',
+        followers: followers,
+        followings: following
+      } as typeof userFound,
       code: 200
     })
   } catch (error) {
