@@ -15,7 +15,7 @@ export default async function getProfileId(
 
     const followers = await AppDataSource.getRepository(Follow)
       .createQueryBuilder('follow')
-      .where('follow.followee = :id', { id: req.params })
+      .where('follow.followee = :id', { id: req.params.userId })
       .getMany()
 
     if (userFound === null) {
