@@ -21,7 +21,7 @@ export class Post implements IPost {
   @Column({ name: 'image_url', type: 'text' })
   imageUrl: string
   
-  @PrimaryColumn({ name: 'followee_id' })
+  @PrimaryColumn({ name: 'author_id' })
   authorId: string
   
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
