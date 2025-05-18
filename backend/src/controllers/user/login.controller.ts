@@ -19,8 +19,8 @@ export default async function logIn (
       return
     }
 
-    const { email, passwordHashed } = req.body
-    if (typeof email !== 'string' || typeof passwordHashed !== 'string') {
+    const { email, password } = req.body
+    if (typeof email !== 'string' || typeof password !== 'string') {
       res.status(409).json({
         message: 'Missing password or email!!',
         code: 409
@@ -38,7 +38,7 @@ export default async function logIn (
       return
     }
 
-    const isEqual = await bcrypt.compare(passwordHashed, userFound.password)
+    const isEqual = await bcrypt.compare(password, userFound.password)
     if (isEqual === false) {
       res.status(404).json({ message: 'Your user is not exist', code: 404 })
       return
@@ -46,7 +46,7 @@ export default async function logIn (
 
     if (typeof SECRET_KEY !== 'string')
       throw new Error(errorMessage('SECRET_KEY'))
-    const token = jwt.sign({ email, passwordHashed }, SECRET_KEY)
+    const token = jwt.sign({ email, password }, SECRET_KEY)
 
     res
       .status(200)

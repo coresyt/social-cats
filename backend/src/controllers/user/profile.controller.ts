@@ -1,13 +1,11 @@
 import { Request, Response } from 'express'
-import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { User } from '../../entity/User'
 import { AppDataSource } from '../../data-source'
 
-export default async function getProfile (
+export default async function getProfile(
   req: Request,
-  res: Response,
-  
+  res: Response
 ): Promise<void> {
   try {
     if (!req.headers.authorization) {
@@ -24,11 +22,7 @@ export default async function getProfile (
     })
     console.log(token)
 
-    if (
-      token === null ||
-      typeof token.email !== 'string' ||
-      typeof token.password !== 'string'
-    ) {
+    if (token === null || typeof token.email !== 'string') {
       res.status(404).json({ message: 'Your token not is valid', code: 404 })
       return
     }
@@ -39,12 +33,6 @@ export default async function getProfile (
       .getOne()
     if (userFound === null) {
       res.status(404).json({ message: 'Your token not is valid', code: 404 })
-      return
-    }
-
-    const isEqual = await bcrypt.compare(token.password, userFound.password)
-    if (isEqual === false) {
-      res.status(404).json({ message: 'Your token is not valid', code: 404 })
       return
     }
 
