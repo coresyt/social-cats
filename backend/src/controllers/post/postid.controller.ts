@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { AppDataSource } from '../../data-source'
 import { PostLike } from '../../entity/PostLike'
 import { Post } from '../../entity/Post'
+import { Comment } from '../../entity/Comment'
 
 export default async function postId (
   req: Request<{ postId: string }>,
@@ -24,15 +25,18 @@ export default async function postId (
         .getRepository(PostLike)
         .createQueryBuilder('post_like')
         .where('post_like.post_id = :id', { id: req.params.postId })
+        .getCount()
+      
+      const comments = await AppDataSource
+        .getRepository(Comment)
+        .createQueryBuilder('comment')
+        .where('comment.post_id = :id', { id: req.params.postId })
         .getMany()
-    
-      let likeForPost = 0
-
-      postsLikes.map(({ postId }) => postId === postFound.id && likeForPost++)
 
       const post = {
         ...postFound,
-        likes: likeForPost
+        likes: postsLikes,
+        comments
       }
     
     res.status(200).json({ post, code: 200 })
