@@ -33,8 +33,8 @@ export default async function postUnlike (req: Request<{ postId: string }>, res:
     const existLike = await AppDataSource
       .getRepository(PostLike)
       .createQueryBuilder('post')
-      .where('post_id = :post', { post: req.params.postId })
-      .andWhere('user_id = :id', { id: userFound.id })
+      .where('post.post_id = :post', { post: req.params.postId })
+      .andWhere('post.user_id = :id', { id: userFound.id })
       .getExists()
 
     if (existLike === false) {
