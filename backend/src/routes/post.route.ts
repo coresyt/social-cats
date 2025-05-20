@@ -12,6 +12,8 @@ postRouter.post('/post/create/', checkAuthentication, postController.postCreate)
 
 postRouter.post('/post/update/:postId', checkAuthentication, postController.postUpdate)
 
+postRouter.delete('/post/delete/:postId', checkAuthentication, postController.postDelete)
+
 postRouter.post('/post/like/:postId', checkAuthentication, postController.postLike)
 
 postRouter.delete('/post/unlike/:postId', checkAuthentication, postController.postUnlike)
