@@ -2,5 +2,15 @@
   "endOfLine": "lf",
   "trailingComma": "none",
   "singleQuote": true,
-  "semi": false
+  "semi": false,
+  "printWidth": 100,
+	"plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		}
+	]
 }

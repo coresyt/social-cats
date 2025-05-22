@@ -2,7 +2,10 @@
   "name": "fullstack-example",
   "private": true,
   "version": "0.1.0",
-  "workspaces": ["backend/", "frontend/"],
+  "workspaces": [
+    "backend/",
+    "frontend/"
+  ],
   "scripts": {
     "commit": "sui-mono commit",
     "build": "turbo build",
@@ -15,14 +18,19 @@
   "license": "MIT",
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
+    "@eslint/compat": "1.2.5",
     "@eslint/css": "0.7.0",
     "@eslint/js": "9.26.0",
     "@s-ui/mono": "2.45.0",
     "eslint": "9.26.0",
     "eslint-config-prettier": "10.1.2",
+    "eslint-plugin-svelte": "3.0.0",
     "globals": "16.0.0",
     "prettier": "3.5.3",
+    "prettier-plugin-svelte": "3.3.3",
+    "prettier-plugin-tailwindcss": "0.6.11",
     "turbo": "2.5.2",
+    "typescript": "5.8.3",
     "typescript-eslint": "8.31.1"
   }
 }

@@ -1,6 +1,6 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-# Created by https://www.toptal.com/developers/gitignore/api/node,turbo
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,turbo
+# Created by https://www.toptal.com/developers/gitignore/api/turbo,node,svelte
+# Edit at https://www.toptal.com/developers/gitignore?templates=turbo,node,svelte
 
 ### Node ###
 # Logs
@@ -142,11 +142,18 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+### Svelte ###
+# gitignore template for the SvelteKit, frontend web component framework
+# website: https://kit.svelte.dev/
+
+.svelte-kit/
+package
+
 ### Turbo ###
 # Turborepo task cache
 .turbo
 
-# End of https://www.toptal.com/developers/gitignore/api/node,turbo
+# End of https://www.toptal.com/developers/gitignore/api/turbo,node,svelte
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
