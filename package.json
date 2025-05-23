@@ -8,8 +8,6 @@
   ],
   "scripts": {
     "commit": "sui-mono commit",
-    "build": "turbo build",
-    "dev": "turbo dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
@@ -29,7 +27,6 @@
     "prettier": "3.5.3",
     "prettier-plugin-svelte": "3.3.3",
     "prettier-plugin-tailwindcss": "0.6.11",
-    "turbo": "2.5.2",
     "typescript": "5.8.3",
     "typescript-eslint": "8.31.1"
   }
