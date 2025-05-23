@@ -1,1 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 @import 'tailwindcss';
+
+:root {
+  --background: theme(--color-zinc-50);
+  --text: theme(--color-zinc-50);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: theme(--color-zinc-900);
+    --text: theme(--color-zinc-50);
+  }
+}
+
+@theme {
+  --font-sans: 'Montserrat', 'sans-serif';
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: theme(--font-sans);
+}
